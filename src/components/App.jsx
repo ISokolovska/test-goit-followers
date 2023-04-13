@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import CardFollowers from './CardFollowers/CardFollowers';
+import UsersList from './UsersList/UsersList';
 
 export const App = () => {
   return (
@@ -10,7 +10,7 @@ export const App = () => {
       alignItems="center"
       p="60px"
     >
-      <CardFollowers />
+      <UsersList />
     </Box>
   );
 };
