@@ -1,16 +1,16 @@
+import { Box } from '@chakra-ui/react';
+import CardFollowers from './CardFollowers/CardFollowers';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
+    <Box
+      className="font-montserrat"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      p="60px"
     >
-      React homework template
-    </div>
+      <CardFollowers />
+    </Box>
   );
 };

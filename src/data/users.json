@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "user": "Elon Reeve Musk",
+    "tweets": 777,
+    "followers": 100500,
+    "avatar": "https://www.takefoto.ru/userfiles/image/Dlya%20Statey/%D0%9B%D1%8E%D0%B4%D0%B8%20%D0%B2%20%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F%D1%85/1.jpg"
+  },
+  {
+    "id": 2,
+    "user": "Alexandra Gunia",
+    "tweets": 456,
+    "followers": 400600,
+    "avatar": "https://img.the-steppe.com/images/news/4046-mZjnicaO.jpg"
+  },
+  {
+    "id": 3,
+    "user": "Kristian Dzyamka",
+    "tweets": 346,
+    "followers": 435678,
+    "avatar": "https://thumbs.dreamstime.com/z/%D1%8E-%D0%B8-%D0%BF%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82-s-%D1%87%D0%B5-%D0%BE%D0%B2%D0%B5%D0%BA%D0%B0-69803479.jpg"
+  },
+  {
+    "id": 4,
+    "user": "Markus Quicken",
+    "tweets": 123,
+    "followers": 43567,
+    "avatar": "https://thumbs.dreamstime.com/z/%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%BA%D0%BE%D0%B6%D0%B8%D0%B9-%D1%87%D0%B5-%D0%BE%D0%B2%D0%B5%D0%BA-%D0%BF%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82%D0%B0-%D1%8E-%D0%B5%D0%B9-%D1%81%D1%82%D0%B0%D1%80%D1%88%D0%B8%D0%B5%D0%B2-%D1%81%D1%87%D0%B0%D1%81%D1%82-%D0%B8%D0%B2%D1%8B%D0%B9-%D1%81%D1%82%D0%B0%D1%80%D1%8B%D0%B9-%D1%81-%D1%88-%D1%8F%D0%BF%D0%BE%D0%B9-82635726.jpg"
+  },
+  {
+    "id": 5,
+    "user": "Stefan Brandner",
+    "tweets": 548,
+    "followers": 347544,
+    "avatar": "https://trinixy.ru/pics4/20110727/podb/2/face_look_02.jpg"
+  },
+  {
+    "id": 6,
+    "user": "Markus Forschner",
+    "tweets": 789,
+    "followers": 390555,
+    "avatar": "https://trinixy.ru/pics4/20110727/podb/2/face_look_04.jpg"
+  },
+  {
+    "id": 7,
+    "user": "Gianluca Schöfer",
+    "tweets": 268,
+    "followers": 347544,
+    "avatar": "https://trinixy.ru/pics4/20110727/podb/2/face_look_07.jpg"
+  },
+  {
+    "id": 8,
+    "user": "Alex Dalung",
+    "tweets": 342,
+    "followers": 5783,
+    "avatar": "https://trinixy.ru/pics4/20110727/podb/2/face_look_08.jpg"
+  },
+  {
+    "id": 9,
+    "user": "Philipp Beisswenger",
+    "tweets": 869,
+    "followers": 3495656,
+    "avatar": "https://trinixy.ru/pics4/20110727/podb/2/face_look_10.jpg"
+  },
+  {
+    "id": 10,
+    "user": "Dmytro Bogdan",
+    "tweets": 3555,
+    "followers": 34555,
+    "avatar": "https://trinixy.ru/pics4/20110727/podb/2/face_look_13.jpg"
+  }
+]
