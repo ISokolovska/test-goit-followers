@@ -1,16 +1,22 @@
-import { Box } from '@chakra-ui/react';
-import UsersList from './UsersList/UsersList';
+import { Suspense, lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Header from './Header/Header';
+import { Loader } from './Loader/Loader';
+
+const LazyHomePage = lazy(() => import('../pages/HomePage'));
+const LazyUsersPage = lazy(() => import('../pages/UsersPage'));
 
 export const App = () => {
   return (
-    <Box
-      className="font-montserrat"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      p="60px"
-    >
-      <UsersList />
-    </Box>
+    <>
+      <Header />
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="" element={<LazyHomePage />} />
+          <Route path="contacts" element={<LazyUsersPage />} />
+          <Route path="*" element={<LazyHomePage />} />
+        </Routes>
+      </Suspense>
+    </>
   );
 };

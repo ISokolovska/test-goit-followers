@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { addUserApi, deleteUserApi, getUsersApi } from 'services/api';
 import axios from 'axios';
+import { addFollowerApi, deleteFollowerApi, getUsersApi } from 'services/api';
 
 axios.defaults.baseURL = 'https://6437c4950c58d3b14578a46d.mockapi.io';
 
 export const fetchUsers = createAsyncThunk(
-  'users/fetchAll',
+  'users/fetchUsers',
   async (_, thunkAPI) => {
     try {
       const response = await getUsersApi();
@@ -16,11 +16,11 @@ export const fetchUsers = createAsyncThunk(
   }
 );
 
-export const addUser = createAsyncThunk(
-  'users/addUser',
-  async (user, thunkAPI) => {
+export const addFollower = createAsyncThunk(
+  'users/addFollower',
+  async (_, thunkAPI) => {
     try {
-      const response = await addUserApi(user);
+      const response = await addFollowerApi();
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -28,11 +28,11 @@ export const addUser = createAsyncThunk(
   }
 );
 
-export const deleteUser = createAsyncThunk(
-  'users/deleteUser',
+export const deleteFollower = createAsyncThunk(
+  'users/deleteFollower',
   async (id, thunkAPI) => {
     try {
-      const response = await deleteUserApi(id);
+      const response = await deleteFollowerApi(id);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

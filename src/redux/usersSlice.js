@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchUsers, addUser, deleteUser } from 'redux/operations';
+import { fetchUsers, addFollower, deleteFollower } from 'redux/operations';
 
 const initialState = {
   users: {
@@ -7,11 +7,19 @@ const initialState = {
     isLoading: false,
     error: null,
   },
+  followedUsers: [],
 };
 
 const usersSlice = createSlice({
   name: 'users',
   initialState: initialState,
+
+  reducers: {
+    addFollowedUsers(state, action) {
+      // state.followedUsers = action.payload;
+      state.followedUsers.push(action.payload);
+    },
+  },
 
   extraReducers: builder => {
     builder
@@ -26,36 +34,37 @@ const usersSlice = createSlice({
       .addCase(fetchUsers.rejected, (state, action) => {
         state.users.isLoading = false;
         state.users.error = action.payload;
-      })
-      .addCase(addUser.pending, (state, action) => {
-        state.users.isLoading = true;
-        state.users.error = '';
-      })
-      .addCase(addUser.fulfilled, (state, action) => {
-        state.users.isLoading = false;
-        state.users.error = null;
-        state.users.items.push(action.payload);
-      })
-      .addCase(addUser.rejected, (state, action) => {
-        state.users.isLoading = false;
-        state.users.error = action.payload;
-      })
-      .addCase(deleteUser.pending, state => {
-        state.users.isLoading = true;
-        state.users.error = '';
-      })
-      .addCase(deleteUser.fulfilled, (state, action) => {
-        state.users.isLoading = false;
-        state.users.error = null;
-        state.users.items = state.users.items.filter(
-          contact => contact.id !== action.payload
-        );
-      })
-      .addCase(deleteUser.rejected, (state, action) => {
-        state.users.isLoading = false;
-        state.users.error = action.payload;
       });
+    // .addCase(addFollower.pending, (state, action) => {
+    //   state.followedUsers.isLoading = true;
+    //   state.followedUsers.error = '';
+    // })
+    // .addCase(addFollower.fulfilled, (state, action) => {
+    //   state.followedUsers.isLoading = false;
+    //   state.followedUsers.error = null;
+    //   state.followedUsers.push(action.payload);
+    // })
+    // .addCase(addFollower.rejected, (state, action) => {
+    //   state.followedUsers.isLoading = false;
+    //   state.followedUsers.error = action.payload;
+    // })
+    // .addCase(deleteFollower.pending, state => {
+    //   state.followedUsers.isLoading = true;
+    //   state.followedUsers.error = '';
+    // })
+    // .addCase(deleteFollower.fulfilled, (state, action) => {
+    //   state.followedUsers.isLoading = false;
+    //   state.followedUsers.error = null;
+    //   state.followedUsers = state.followedUsers.filter(
+    //     followedUser => followedUser.id !== action.payload
+    //   );
+    // })
+    // .addCase(deleteFollower.rejected, (state, action) => {
+    //   state.followedUsers.isLoading = false;
+    //   state.followedUsers.error = action.payload;
+    // });
   },
 });
 
 export const usersReducer = usersSlice.reducer;
+export const { addFollowedUsers } = usersSlice.actions;

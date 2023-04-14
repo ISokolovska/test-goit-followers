@@ -10,7 +10,7 @@ const textMain = defineStyle({
   color: 'accentColor',
 });
 
-export const TextTheme = defineStyleConfig({
+export const textTheme = defineStyleConfig({
   variants: {
     textMain,
   },
