@@ -12,15 +12,15 @@ import { Loader } from 'components/Loader/Loader';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={<Loader />} persistor={persistor}>
-        <BrowserRouter basename="/test-goit-followers">
-          <ChakraProvider theme={theme}>
-            <App />
-          </ChakraProvider>
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <Provider store={store}>
+    <PersistGate loading={<Loader />} persistor={persistor}>
+      <BrowserRouter basename="/test-goit-followers">
+        <ChakraProvider theme={theme}>
+          <App />
+        </ChakraProvider>
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>
+  // </React.StrictMode>
 );

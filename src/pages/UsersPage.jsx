@@ -14,9 +14,9 @@ function UsersPage() {
   //     dispatch(fetchContacts());
   //   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(fetchUsers());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchUsers());
+  // }, []);
 
   return (
     <Box

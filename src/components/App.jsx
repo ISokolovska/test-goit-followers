@@ -12,8 +12,8 @@ export const App = () => {
       <Header />
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="" element={<LazyHomePage />} />
-          <Route path="contacts" element={<LazyUsersPage />} />
+          <Route index path="/" element={<LazyHomePage />} />
+          <Route path="/users" element={<LazyUsersPage />} />
           <Route path="*" element={<LazyHomePage />} />
         </Routes>
       </Suspense>

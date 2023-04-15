@@ -10,7 +10,7 @@ import {
   ListItem,
   Text,
 } from '@chakra-ui/react';
-import { addFollower, fetchUsers } from 'redux/operations';
+import { changeFollower, fetchUsers } from 'redux/operations';
 import {
   getError,
   getFollowedUsers,
@@ -22,38 +22,39 @@ import logo from './../../images/logo.svg';
 import image from './../../images/followers.png';
 import boy from './../../images/boy.png';
 import rectangle from './../../images/rectangle.png';
-
-const cardsPerPage = 8;
+import { addFollowedUsers, deleteFollowedUsers } from 'redux/usersSlice';
 
 const UsersList = () => {
   const users = useSelector(getUsers);
   const error = useSelector(getError);
   const isLoading = useSelector(getIsLoading);
   const followedUsers = useSelector(getFollowedUsers);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [errorMsg, setErrorMsg] = useState('');
-  const [followers, setFollowers] = useState('');
-  const [page, setPage] = useState(cardsPerPage);
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchUsers());
-  // }, []);
-
-  const handleShowMoreUsers = () => {
-    // setPage(page + cardsPerPage);
+  const handleShowMoreUsers = async () => {
+    setPage(prevPage => prevPage + 1);
   };
 
-  const onAddFollowers = ({ id, followers }) => {
+  const onAddFollowers = user => {
     console.log(followedUsers);
     const userWithMyFollowers = followedUsers.find(
-      followedUser => followedUser.id === id
+      followedUser => followedUser.id === user.id
     );
     if (!userWithMyFollowers) {
-      setFollowers(followers + 1);
+      user = { ...user, followers: user.followers + 1 };
+      dispatch(changeFollower(user));
+      dispatch(addFollowedUsers(user));
+    } else if (userWithMyFollowers) {
+      user = { ...user, followers: user.followers - 1 };
+      dispatch(changeFollower(user));
+      dispatch(deleteFollowedUsers(user.id));
     }
-    dispatch(addFollower());
   };
+
+  useEffect(() => {
+    dispatch(fetchUsers(page));
+  }, [page]);
 
   return (
     <Box>
@@ -115,18 +116,35 @@ const UsersList = () => {
                   <Text variant="textMain" mt="16px">
                     {user.followers} Followers
                   </Text>
-                  {/* {isClick && ( */}
-                  <Button
-                    type="button"
-                    // variant="cardButton"
-                    variant={!followers ? 'cardButton' : 'cardButtonClick'}
-                    mt="26px"
-                    mb="16px"
-                    onClick={onAddFollowers}
-                  >
-                    Follow
-                  </Button>
-                  {/* )} */}
+                  {!followedUsers.find(elem => elem.id === user.id) ? (
+                    <Button
+                      type="button"
+                      variant="cardButton"
+                      background="accentColor"
+                      _hover={{
+                        background: 'buttonSecondColor',
+                      }}
+                      mt="26px"
+                      mb="16px"
+                      onClick={() => onAddFollowers(user)}
+                    >
+                      Follow
+                    </Button>
+                  ) : (
+                    <Button
+                      type="button"
+                      variant="cardButton"
+                      background="buttonSecondColor"
+                      _hover={{
+                        background: 'accentColor',
+                      }}
+                      mt="26px"
+                      mb="16px"
+                      onClick={() => onAddFollowers(user)}
+                    >
+                      Following
+                    </Button>
+                  )}
                 </Flex>
               </ListItem>
             );
@@ -140,7 +158,7 @@ const UsersList = () => {
           mb="16px"
           onClick={handleShowMoreUsers}
         >
-          {isLoading ? <Loader /> : 'Load More'}
+          Load More
         </Button>
       </Flex>
     </Box>

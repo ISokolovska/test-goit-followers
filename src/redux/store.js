@@ -16,7 +16,7 @@ import storage from 'redux-persist/lib/storage';
 const followersPersistConfig = {
   key: 'userData',
   storage: storage,
-  whitelist: ['followers'],
+  whitelist: ['followedUsers'],
 };
 
 const followersPersistReducer = persistReducer(
