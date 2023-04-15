@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
+
 import Header from './Header/Header';
 import { Loader } from './Loader/Loader';
 
@@ -13,8 +14,8 @@ export const App = () => {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route index path="/" element={<LazyHomePage />} />
-          <Route path="/users" element={<LazyUsersPage />} />
-          <Route path="*" element={<LazyHomePage />} />
+          <Route path="/tweets" element={<LazyUsersPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Suspense>
     </>

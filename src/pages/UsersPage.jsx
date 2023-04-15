@@ -1,35 +1,33 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Box, Text } from '@chakra-ui/react';
-import { getError, getIsLoading } from 'redux/selectors';
+import React from 'react';
+// import { useSelector } from 'react-redux';
+// import { Box, Text } from '@chakra-ui/react';
+// import { getError, getIsLoading } from 'redux/selectors';
 import UsersList from 'components/UsersList/UsersList';
-import { fetchUsers } from 'redux/operations';
+import { Box, Button, Link } from '@chakra-ui/react';
+import { IoMdArrowRoundBack } from 'react-icons/io';
+import { useLocation } from 'react-router-dom';
 
 function UsersPage() {
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
-  const dispatch = useDispatch();
-
-  //   useEffect(() => {
-  //     dispatch(fetchContacts());
-  //   }, [dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(fetchUsers());
-  // }, []);
+  // const isLoading = useSelector(getIsLoading);
+  // const error = useSelector(getError);
+  const location = useLocation();
+  console.log(location);
+  console.log(location.state);
+  const backLinkHref = location.state?.from ?? '/';
 
   return (
-    <Box
-      //   display="flex"
-      //   flexDirection="column"
-      //   alignItems="center"
-      //   m="0 auto"
-      //   bg="champagne"
-      //   maxWidth="1280px"
-      //   h="100vh"
-      //   p="60px 30px "
-      className="font-montserrat"
-    >
+    <Box className="font-montserrat">
+      <Link to={backLinkHref}>Go back</Link>
+      {/* <Link to={'home'} state={{ from: location.state?.from }}>
+        <Button
+          leftIcon={<IoMdArrowRoundBack size={50} />}
+          size="lg"
+          ml="50px"
+          colorScheme="green"
+          variant="outline"
+        ></Button>
+      </Link> */}
+
       <UsersList />
       {/* {!isLoading && <UsersList />}
       {error.length > 0 && (

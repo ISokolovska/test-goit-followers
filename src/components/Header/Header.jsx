@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link, Box, Container } from '@chakra-ui/react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 function Header() {
+  const location = useLocation();
   return (
     <Box as="header" w="100%" bg="white">
       <Container
@@ -17,8 +18,8 @@ function Header() {
         <Link variant="headerLink" as={NavLink} to="/" mr="50px">
           Home
         </Link>
-        <Link variant="headerLink" as={NavLink} to="/users">
-          Users
+        <Link variant="headerLink" as={NavLink} to="/tweets">
+          Tweets
         </Link>
       </Container>
     </Box>

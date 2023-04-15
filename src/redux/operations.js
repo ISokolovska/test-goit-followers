@@ -28,15 +28,3 @@ export const changeFollower = createAsyncThunk(
     }
   }
 );
-
-// export const deleteFollower = createAsyncThunk(
-//   'users/deleteFollower',
-//   async (id, thunkAPI) => {
-//     try {
-//       const response = await deleteFollowerApi(id);
-//       return response;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error);
-//     }
-//   }
-// );

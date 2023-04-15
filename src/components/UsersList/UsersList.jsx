@@ -17,12 +17,12 @@ import {
   getIsLoading,
   getUsers,
 } from 'redux/selectors';
+import { addFollowedUsers, deleteFollowedUsers } from 'redux/usersSlice';
 import { Loader } from 'components/Loader/Loader';
 import logo from './../../images/logo.svg';
 import image from './../../images/followers.png';
 import boy from './../../images/boy.png';
 import rectangle from './../../images/rectangle.png';
-import { addFollowedUsers, deleteFollowedUsers } from 'redux/usersSlice';
 
 const UsersList = () => {
   const users = useSelector(getUsers);
