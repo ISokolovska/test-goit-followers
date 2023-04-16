@@ -1,10 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Box, Container } from '@chakra-ui/react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { resetState } from 'redux/usersSlice';
 
 function Header() {
-  const location = useLocation();
+  const dispatch = useDispatch();
   return (
     <Box as="header" w="100%" bg="white">
       <Container
@@ -15,7 +16,15 @@ function Header() {
         m="0 auto"
         p="30px 16px"
       >
-        <Link variant="headerLink" as={NavLink} to="/" mr="50px">
+        <Link
+          variant="headerLink"
+          as={NavLink}
+          to="/"
+          mr="50px"
+          onClick={() => {
+            dispatch(resetState());
+          }}
+        >
           Home
         </Link>
         <Link variant="headerLink" as={NavLink} to="/tweets">

@@ -24,7 +24,7 @@ import image from './../../images/followers.png';
 import boy from './../../images/boy.png';
 import rectangle from './../../images/rectangle.png';
 
-const UsersList = () => {
+const UsersList = ({ filter }) => {
   const users = useSelector(getUsers);
   const error = useSelector(getError);
   const isLoading = useSelector(getIsLoading);
@@ -37,7 +37,7 @@ const UsersList = () => {
   };
 
   const onAddFollowers = user => {
-    console.log(followedUsers);
+    // console.log(followedUsers);
     const userWithMyFollowers = followedUsers.find(
       followedUser => followedUser.id === user.id
     );
@@ -52,22 +52,62 @@ const UsersList = () => {
     }
   };
 
+  const addComaToFollowers = followers => {
+    let str = String(followers);
+    let arr = [];
+    let count = Math.ceil(str.length / 3);
+    for (let i = 1; i <= count; i++) {
+      if (str.length >= 3) {
+        arr.push(str.slice(-3, str.length));
+      } else {
+        arr.push(str.slice(0, str.length));
+      }
+      str = str.slice(0, -3);
+    }
+    arr = arr.reverse().join(',');
+
+    return arr;
+  };
+
+  const followedUsersId = followedUsers.map(elem => elem.id);
+  // console.log(followedUsers, arrId);
+  const onFilterContacts = users => {
+    if (filter === 'follow') {
+      const filteredContacts = users.filter(
+        user => !followedUsersId.includes(user.id)
+      );
+      return filteredContacts;
+    }
+    if (filter === 'following') {
+      const filteredContacts = users.filter(user =>
+        followedUsersId.includes(user.id)
+      );
+      return filteredContacts;
+    }
+  };
+  const filteredContacts = filter === 'all' ? users : onFilterContacts(users);
+
   useEffect(() => {
     dispatch(fetchUsers(page));
   }, [page]);
 
   return (
-    <Box>
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+    >
       {isLoading === true && <Loader />}
       <List
         display="flex"
         flexWrap="wrap"
-        justifyContent="center"
+        justifyContent="flex-start"
         alignItems="center"
         gap="15px"
       >
-        {users &&
-          users.map(user => {
+        {filteredContacts &&
+          filteredContacts.map(user => {
             return (
               <ListItem key={user.id}>
                 <Flex
@@ -114,7 +154,7 @@ const UsersList = () => {
                   ></Image>
                   <Text variant="textMain">{user.tweets} tweets</Text>
                   <Text variant="textMain" mt="16px">
-                    {user.followers} Followers
+                    {addComaToFollowers(user.followers)} Followers
                   </Text>
                   {!followedUsers.find(elem => elem.id === user.id) ? (
                     <Button

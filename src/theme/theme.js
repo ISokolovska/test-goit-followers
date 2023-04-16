@@ -27,7 +27,11 @@ const fonts = {
   heading: `'Montserrat', sans-serif`,
   body: `'Montserrat', sans-serif`,
 };
-const components = { Button: buttonTheme, Text: textTheme, Link: linkTheme };
+const components = {
+  Button: buttonTheme,
+  Text: textTheme,
+  Link: linkTheme,
+};
 
 const theme = extendTheme({
   colors,

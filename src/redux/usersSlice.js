@@ -23,6 +23,9 @@ const usersSlice = createSlice({
         followedUser => followedUser.id !== action.payload
       );
     },
+    resetState(state, action) {
+      state.users.items = [];
+    },
   },
 
   extraReducers: builder => {
@@ -58,4 +61,5 @@ const usersSlice = createSlice({
 });
 
 export const usersReducer = usersSlice.reducer;
-export const { addFollowedUsers, deleteFollowedUsers } = usersSlice.actions;
+export const { addFollowedUsers, deleteFollowedUsers, resetState } =
+  usersSlice.actions;
