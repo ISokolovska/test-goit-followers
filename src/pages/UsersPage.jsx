@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
-// import { Box, Text } from '@chakra-ui/react';
-// import { getError, getIsLoading } from 'redux/selectors';
-import UsersList from 'components/UsersList/UsersList';
-import { Box, Button, Link, Select } from '@chakra-ui/react';
-import { IoMdArrowRoundBack } from 'react-icons/io';
-import { NavLink, useLocation } from 'react-router-dom';
-import { getFollowedUsers } from 'redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useLocation } from 'react-router-dom';
+import { IoMdArrowRoundBack } from 'react-icons/io';
+import { Box, Button, Flex, Link, Select } from '@chakra-ui/react';
+
+// import { getError, getIsLoading } from 'redux/selectors';
+
 import { resetState } from 'redux/usersSlice';
+import UsersList from 'components/UsersList/UsersList';
 
 function UsersPage() {
   // const isLoading = useSelector(getIsLoading);
@@ -16,65 +15,75 @@ function UsersPage() {
   const dispatch = useDispatch();
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
-  const followedUsers = useSelector(getFollowedUsers);
+
   const [filter, setFilter] = useState('all');
   return (
-    <Box className="font-montserrat">
-      <Link
-        as={NavLink}
-        to={backLinkHref}
-        onClick={() => {
-          dispatch(resetState());
-        }}
+    <Flex
+      className="font-montserrat"
+      flexDirection="column"
+      justifyContent="flex-start"
+      alignItems="flex-start"
+      maxW="1280px"
+      m="0 auto"
+    >
+      <Flex
+        flexDirection="baseline"
+        justifyContent="flex-start"
+        alignItems="flex-start"
       >
-        Go back
-      </Link>
-      <Select
-        variant="outline"
-        m="0 auto"
-        mb="30px"
-        w="300px"
-        fontFamily="Montserrat"
-        fontStyle="normal"
-        fontWeight="500"
-        fontSize="20px"
-        lineHeight="1.2"
-        color="buttonTextColor"
-        // placeholder="Select option"
-        borderColor="darkViolet"
-        _hover={{ borderColor: 'buttonSecondColor' }}
-        _focus={{ borderColor: 'buttonSecondColor' }}
-        onChange={e => {
-          setFilter(e.target.value);
-        }}
-      >
-        <option value="all" placeholder="medium size" size="md">
-          show all
-        </option>
-        <option value="follow" placeholder="medium size" size="md">
-          follow
-        </option>
-        <option value="following" placeholder="medium size" size="md">
-          followings
-        </option>
-      </Select>
-
-      {/* <Link to={'home'} state={{ from: location.state?.from }}>
-        <Button
-          leftIcon={<IoMdArrowRoundBack size={50} />}
-          size="lg"
-          ml="50px"
-          colorScheme="green"
-          variant="outline"
-        ></Button>
-      </Link> */}
+        <Link
+          as={NavLink}
+          to={backLinkHref}
+          onClick={() => {
+            dispatch(resetState());
+          }}
+        >
+          <Button
+            leftIcon={<IoMdArrowRoundBack size={30} color="darkViolet" />}
+            h="40px"
+            mr="50px"
+            borderColor="darkViolet"
+            _hover={{ borderColor: 'buttonSecondColor' }}
+            variant="outline"
+          ></Button>
+        </Link>
+        <Select
+          // variant="outline"
+          m="0 auto"
+          mb="30px"
+          w="300px"
+          fontFamily="Montserrat"
+          fontStyle="normal"
+          fontWeight="500"
+          fontSize="20px"
+          lineHeight="1.2"
+          color="buttonTextColor"
+          border="1px solid "
+          borderColor="darkViolet"
+          _hover={{ borderColor: 'buttonSecondColor' }}
+          _focus={{ borderColor: 'darkViolet', boxShadow: 'none' }}
+          onChange={e => {
+            setFilter(e.target.value);
+          }}
+        >
+          <option value="all" placeholder="medium size" size="md">
+            show all
+          </option>
+          <option value="follow" placeholder="medium size" size="md">
+            follow
+          </option>
+          <option value="following" placeholder="medium size" size="md">
+            following
+          </option>
+        </Select>
+      </Flex>
 
       <UsersList filter={filter} />
       {/* {!isLoading && <UsersList />}
       {error.length > 0 && (
         <Text>Some error occured... With message {error}</Text>
       )} */}
-    </Box>
+    </Flex>
   );
 }
 

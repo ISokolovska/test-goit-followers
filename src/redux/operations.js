@@ -21,7 +21,6 @@ export const changeFollower = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const response = await changeFollowerApi(user);
-      // console.log(response);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

@@ -20,7 +20,7 @@ function Header() {
           variant="headerLink"
           as={NavLink}
           to="/"
-          mr="50px"
+          mr="150px"
           onClick={() => {
             dispatch(resetState());
           }}

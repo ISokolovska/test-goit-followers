@@ -13,6 +13,8 @@ const colors = {
   buttonTextColor: '#373737',
   buttonSecondColor: '#5CD3A8',
   darkViolet: '#471CA9',
+  white: '#FFFFFF',
+  mustard: '#E4BE52',
 };
 
 const styles = {
@@ -41,3 +43,7 @@ const theme = extendTheme({
   fonts,
 });
 export default theme;
+
+// const theme = extendTheme({
+//   components: { Button: { baseStyle: { _focus: { boxShadow: 'none' } } } },
+// });

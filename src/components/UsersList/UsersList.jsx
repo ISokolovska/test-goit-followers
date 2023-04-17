@@ -37,7 +37,6 @@ const UsersList = ({ filter }) => {
   };
 
   const onAddFollowers = user => {
-    // console.log(followedUsers);
     const userWithMyFollowers = followedUsers.find(
       followedUser => followedUser.id === user.id
     );
@@ -70,7 +69,6 @@ const UsersList = ({ filter }) => {
   };
 
   const followedUsersId = followedUsers.map(elem => elem.id);
-  // console.log(followedUsers, arrId);
   const onFilterContacts = users => {
     if (filter === 'follow') {
       const filteredContacts = users.filter(
@@ -104,7 +102,7 @@ const UsersList = ({ filter }) => {
         flexWrap="wrap"
         justifyContent="flex-start"
         alignItems="center"
-        gap="15px"
+        gap="20px 70px"
       >
         {filteredContacts &&
           filteredContacts.map(user => {
@@ -193,9 +191,7 @@ const UsersList = ({ filter }) => {
       <Flex justifyContent="center">
         <Button
           type="button"
-          variant="cardButton"
-          mt="26px"
-          mb="16px"
+          variant="loadMoreButton"
           onClick={handleShowMoreUsers}
         >
           Load More
