@@ -12,13 +12,12 @@ import {
 } from '@chakra-ui/react';
 import { changeFollower, fetchUsers } from 'redux/operations';
 import {
-  getError,
+  // getError,
   getFollowedUsers,
-  getIsLoading,
+  // getIsLoading,
   getUsers,
 } from 'redux/selectors';
 import { addFollowedUsers, deleteFollowedUsers } from 'redux/usersSlice';
-import { Loader } from 'components/Loader/Loader';
 import logo from './../../images/logo.svg';
 import image from './../../images/followers.png';
 import boy from './../../images/boy.png';
@@ -26,9 +25,9 @@ import rectangle from './../../images/rectangle.png';
 
 const UsersList = ({ filter }) => {
   const users = useSelector(getUsers);
-  const error = useSelector(getError);
-  const isLoading = useSelector(getIsLoading);
   const followedUsers = useSelector(getFollowedUsers);
+  // const isLoading = useSelector(getIsLoading);
+  // const error = useSelector(getError);
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
 
@@ -87,7 +86,7 @@ const UsersList = ({ filter }) => {
 
   useEffect(() => {
     dispatch(fetchUsers(page));
-  }, [page]);
+  }, [page, dispatch]);
 
   return (
     <Box
@@ -96,7 +95,6 @@ const UsersList = ({ filter }) => {
       justifyContent="center"
       alignItems="center"
     >
-      {isLoading === true && <Loader />}
       <List
         display="flex"
         flexWrap="wrap"
@@ -188,14 +186,17 @@ const UsersList = ({ filter }) => {
             );
           })}
       </List>
+
       <Flex justifyContent="center">
-        <Button
-          type="button"
-          variant="loadMoreButton"
-          onClick={handleShowMoreUsers}
-        >
-          Load More
-        </Button>
+        {users.length >= 9 && (
+          <Button
+            type="button"
+            variant="loadMoreButton"
+            onClick={handleShowMoreUsers}
+          >
+            Load More
+          </Button>
+        )}
       </Flex>
     </Box>
   );

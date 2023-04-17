@@ -43,7 +43,3 @@ const theme = extendTheme({
   fonts,
 });
 export default theme;
-
-// const theme = extendTheme({
-//   components: { Button: { baseStyle: { _focus: { boxShadow: 'none' } } } },
-// });

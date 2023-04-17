@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 import { IoMdArrowRoundBack } from 'react-icons/io';
-import { Box, Button, Flex, Link, Select } from '@chakra-ui/react';
-
-// import { getError, getIsLoading } from 'redux/selectors';
-
+import { Button, Flex, Link, Select } from '@chakra-ui/react';
 import { resetState } from 'redux/usersSlice';
 import UsersList from 'components/UsersList/UsersList';
 
 function UsersPage() {
-  // const isLoading = useSelector(getIsLoading);
-  // const error = useSelector(getError);
   const dispatch = useDispatch();
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
@@ -77,12 +72,7 @@ function UsersPage() {
           </option>
         </Select>
       </Flex>
-
       <UsersList filter={filter} />
-      {/* {!isLoading && <UsersList />}
-      {error.length > 0 && (
-        <Text>Some error occured... With message {error}</Text>
-      )} */}
     </Flex>
   );
 }
