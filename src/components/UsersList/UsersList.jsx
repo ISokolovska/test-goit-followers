@@ -11,23 +11,16 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { changeFollower, fetchUsers } from 'redux/operations';
-import {
-  // getError,
-  getFollowedUsers,
-  // getIsLoading,
-  getUsers,
-} from 'redux/selectors';
+import { getFollowedUsers, getUsers } from 'redux/selectors';
 import { addFollowedUsers, deleteFollowedUsers } from 'redux/usersSlice';
 import logo from './../../images/logo.svg';
 import image from './../../images/followers.png';
 import boy from './../../images/boy.png';
-import rectangle from './../../images/rectangle.png';
 
 const UsersList = ({ filter }) => {
   const users = useSelector(getUsers);
+  console.log(users);
   const followedUsers = useSelector(getFollowedUsers);
-  // const isLoading = useSelector(getIsLoading);
-  // const error = useSelector(getError);
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
 
@@ -114,9 +107,18 @@ const UsersList = ({ filter }) => {
                   h="460px"
                   pt="20px"
                   pb=" 36px "
-                  bg="linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%)"
+                  bgGradient="linear(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%)"
                   boxShadow="mainShadow"
                   borderRadius="20px"
+                  _before={{
+                    content: `""`,
+                    position: 'absolute',
+                    width: '380px',
+                    height: '8px',
+                    bg: 'accentColor',
+                    boxShadow:
+                      '0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06), inset 0px -1.71846px 3.43693px #AE7BE3, inset 0px 3.43693px 2.5777px #FBF8FF',
+                  }}
                 >
                   <Image
                     src={logo}
@@ -133,20 +135,17 @@ const UsersList = ({ filter }) => {
                     boxSize="308px 168px"
                     mt="8px"
                   ></Image>
+
                   <Image
-                    src={rectangle}
-                    alt="Rectangle"
-                    width="380px"
-                    height="8px"
-                    position="relative"
-                    top="28px"
-                  ></Image>
-                  <Image
-                    src={boy}
+                    // src={boy}
+                    src={user.avatar}
                     alt="Boy"
                     boxSize="80px"
                     position="relative"
                     top="-18px"
+                    border="9px solid #EBD8FF"
+                    box-shadow=" 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06), inset 0px -2.19582px 4.39163px #AE7BE3, inset 0px 4.39163px 3.29372px #FBF8FF"
+                    borderRadius="50px"
                   ></Image>
                   <Text variant="textMain">{user.tweets} tweets</Text>
                   <Text variant="textMain" mt="16px">
