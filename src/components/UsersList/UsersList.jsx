@@ -137,13 +137,14 @@ const UsersList = ({ filter }) => {
                   ></Image>
 
                   <Image
-                    // src={boy}
-                    src={user.avatar}
+                    src={boy}
+                    // src={user.avatar}
                     alt="Boy"
                     boxSize="80px"
                     position="relative"
                     top="-18px"
                     border="9px solid #EBD8FF"
+                    bgGradient="linear(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%)"
                     box-shadow=" 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06), inset 0px -2.19582px 4.39163px #AE7BE3, inset 0px 4.39163px 3.29372px #FBF8FF"
                     borderRadius="50px"
                   ></Image>
