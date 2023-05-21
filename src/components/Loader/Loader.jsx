@@ -11,7 +11,7 @@ export function Loader() {
       alignItems="center"
       width="100%"
       height="100%"
-      margin=" 0 auto"
+      margin="0 auto"
     >
       <RotatingLines
         strokeColor="grey"
